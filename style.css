@@ -1,0 +1,18 @@
+@font-face {
+    font-family: 'JetBrainsMono';
+    font-style: normal;
+    font-weight: 400;
+    src: local('JetBrainsMono'), local('JetBrainsMono-Regular'),
+        url(JetBrainsMono-Regular.woff2) format('woff'),
+				url(JetBrainsMonoNL-Regular.ttf) format('ttf')
+}
+* {
+	font-family: 'JetBrainsMono', sans;
+	background-color: black;
+	color: #ddd;
+}
+
+body {
+	padding: 0px;
+	margin: 0px;
+}
