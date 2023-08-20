@@ -6,13 +6,11 @@
         url(JetBrainsMono-Regular.woff2) format('woff'),
 				url(JetBrainsMonoNL-Regular.ttf) format('ttf')
 }
-* {
-	font-family: 'JetBrainsMono', sans;
-	background-color: black;
-	color: #ddd;
-}
 
 body {
 	padding: 0px;
 	margin: 0px;
+	font-family: 'JetBrainsMono', sans;
+	background-color: black;
+	color: #ddd;
 }
