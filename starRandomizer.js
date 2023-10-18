@@ -2,10 +2,17 @@ function prnt() {
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
-  let a = getRandomInt(100);
-  let b = getRandomInt(100);
-  let c = getRandomInt(3) + 2;
-  document.writeln('<img src="star.svg" style="width:0.' + c + 'vh;top:' + a + 'vh;left:' + b + 'vw;">');
+  let a = getRandomInt(98) + 1;
+  let b = getRandomInt(98) + 1;
+  let c = getRandomInt(4) + 8;  // 7
+  c = c/10;
+  let d = getRandomInt(46) + 210;
+  let e = getRandomInt(46) + 210;
+  let f = getRandomInt(46) + 210;
+  let g = getRandomInt(25);
+  let h = getRandomInt(2) + 5;
+
+  document.writeln(`<span style="font-size:${c}vh;top:${a}vh;left:${b}vw;color:rgb(${d},${e},${f});animation: ${h}s linear ${g}s infinite alternate both blik;">•</span>`);
 }
 
 function starset() {
