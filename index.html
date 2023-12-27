@@ -13,7 +13,8 @@
         text-align: center;
         line-height: 1.7;
         overflow-wrap: break-word;
-        max-width: 100vw;
+        overflow: hidden;
+        min-width: 100vw;
         /*text-shadow: #FC0 1px 1px 1px;*/
       }
       
@@ -68,6 +69,12 @@
       .s * {
         position: absolute;
         z-index: -10;
+        overflow: hidden;
+      }
+
+      .s img {
+        position: relative;
+        z-index: -5;
       }
 
       @keyframes blik {
@@ -86,9 +93,9 @@
           motion-path: ray(45deg);
         }
       }*/
-      @keyframes cometFly {
+      /*@keyframes cometFly {
         to {offset-distance: 100%;}
-      }
+      }*/
 
     </style>
   </head>
@@ -136,15 +143,16 @@
         <a href="#">Email</a>
       </div> -->
       
-      <div class="block">
+      <!-- <div class="block">
         <a href="https://vk.com/kaill1">ВК моего дизайнера превьюшек</a>
-      </div>
+      </div> -->
     </div>
   </div>
   <span class="s">
     <!-- <img class="s" src="star.svg" style="width:0.3vh;top:0vh;left:0vh;"> -->
     <script>starPrint();</script>
     <!-- <img inert disabled src="2.svg" style="height:7vh;offset-path: path('M -100 -200 l 9500 2000');animation:cometFly 15s linear infinite;top:0px;left:0px;offset-rotate:auto;"> -->
+    <!-- <img inert disabled src="2.svg" style="height:7vh;offset-path: path('M 0 0 l 100 100');animation:cometFly 5s linear infinite;offset-rotate:auto;"> -->
   </span>
   
   </body>
