@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+		<!-- <meta charset="UTF-8"> -->
+    <title>Заказы</title>
+    <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
+    <link href="../style.css" rel="stylesheet" type="text/css">
+    <script src="../nuLib.js"></script>
+    <script src="../astraGen.js"></script>
+		<script src="gListData.js"></script>
+		<script src="black-list.js"></script>
+    <style>
+			/*:root {
+				--s1: 2.5vh;       
+				--s2: 2.1vh;
+				--s3: 1.7vh;
+			}*/
+			
+			:root {
+				--s1: clamp(20px, 2.4vh, 2.4vh);       
+				--s2: clamp(16px, 1.9vh, 2vh);
+				--s3: clamp(14px, 1.4vh, 1.4vh);
+			}
+			
+			
+      body {
+        line-height: 1.4;
+        overflow-wrap: break-word;
+        /*overflow: hidden;*/
+        min-width: 99vw;
+        /*text-shadow: #FC0 1px 1px 1px;*/
+      }
+      
+      .content {
+        /*padding-top: 0.1vw;*/
+        margin: auto;
+				width: min(60vh, 100vw);
+				//font-size: var(--s3);
+      }
+      
+      .s * {
+        position: absolute;
+        z-index: -10;
+        overflow: hidden;
+      }
+
+      .s img {
+        position: relative;
+        z-index: -5;
+      }
+
+      @keyframes blik {
+        0% {text-shadow:none;}
+        50% {text-shadow:0.1vh 0.1vh 0.2vh,-0.1vh 0.1vh 0.2vh,0.1vh -0.1vh 0.2vh,-0.1vh -0.1vh 0.2vh;}
+        100% {text-shadow:none;}
+      }
+			
+			.left {
+				float: left;
+				width: 20%;
+			}
+			
+			.center {
+				float: left;
+			}
+			
+			.right {
+				float: right;
+				width: 78%;
+			}
+			
+			.attention, .attention a, .attention a:hover, .attention a:visited {
+				font-size: var(--s1);
+				color: Crimson;
+				text-align: center;
+				cursor: pointer;
+			}
+			
+			.game {
+				width: 100%;
+				float: left;
+			}
+			
+			.poster, .poster * {
+				width: 100%;
+			}
+			
+			.poster {
+				
+			}
+			
+			.progress {  
+				width: calc(100% - 0.8vh);
+				height: 3.2vh;
+				border: 0.4vh solid #a970ff;
+			}
+			
+			.bar-space {
+				margin: 0.4vh;
+				width: auto;
+				height: 2.4vh;
+				background-color: rgba(0,0,0,0);
+			}
+			
+			.bar {
+				background-color: #a970ff;
+				height: 100%;
+			}
+			
+			.g-name {
+				font-size: var(--s1);
+			}
+			
+			.g-name a, .g-name a:hover, .g-name a:visited {
+				color: SpringGreen;
+				cursor: help;
+				text-decoration: none;
+			}
+			
+			.count {
+				font-size: var(--s2);
+			}
+			
+			.description {
+				font-size: var(--s3);
+			}
+			
+			#rules, #BlackList {
+				color: crimson;
+			}
+			
+			.back {
+				text-decoration: underline;
+				font-size: var(--s1);
+			}
+			
+			/*li {
+				margin-top: 0.5rem;
+			}*/
+			
+			.content#BlackList ul {
+				cursor: not-allowed;
+			}
+			
+			.back {
+				cursor: pointer;
+			}
+    </style>
+		<script>
+			// LIB
+			function G(id) {
+				return document.getElementById(id);
+			}
+		</script>
+		<script>
+		  // Page swap
+			function showRules () {
+				G('gList').style.display = 'none';
+				G('BlackList').style.display = 'none';
+				G('rules').style.display = 'block';
+			}
+			
+			function showList () {
+				G('rules').style.display = 'none';
+				G('BlackList').style.display = 'none';
+				G('gList').style.display = 'block';
+			}
+			
+			function showBlackList () {
+				G('rules').style.display = 'none';
+				G('gList').style.display = 'none';
+				G('BlackList').style.display = 'block';
+			}
+		</script>
+		<script>
+		  //PRINTER
+			function printGame (number) {
+				document.write(`<div class="game"><div class="left"><div class="poster"><img src="${GL[number].imgSRC}"></div></div><div class="right"><div class="g-name"><a href="https://www.google.com/search?q=${GL[number].name} игра" title="нажми чтобы искать в Google">${GL[number].name}</a></div><div class="progress"><div class="bar-space"><div class="bar" style="width:${GL[number].occupancy}%;"></div></div></div><div class="count">собрано ${GL[number].voteNow} из ${GL[number].voteNeed}</div><div class="description">${GL[number].description}</div></div></div>`);
+			}
+			
+			function printGames () {
+				for (let i = 0; i < GL.length; i++) {
+					let tempOccupancy = GL[i].voteNow / GL[i].voteNeed * 100;
+					//console.log(tempOccupancy);
+					if (tempOccupancy > 100) {
+						tempOccupancy = 100;
+					}
+					if (tempOccupancy < 0) {
+						tempOccupancy = 0;
+					}
+					GL[i].occupancy	= tempOccupancy;
+				}
+				
+				GL.sort((a, b) => a.alwaysOnTop > b.occupancy ? 1 : -1);
+				
+				for (let i = 0; i < GL.length; i++) {
+					printGame (i);
+				}
+			}
+			
+			function printBL () {
+				for (let i = 0; 0 < BL.length; i++) {
+					document.write(`<li>${BL[0]}</li>`);
+					BL = BL.slice(1);
+				}
+			}
+		</script>
+  </head>
+  <body>
+  <script scr="../../starRandomizer.js"></script>
+  <div class="content" style="color:SpringGreen" id="gList">
+	  <div class="attention">
+			<span style="text-decoration:underline;" onclick="showRules()">Как это работает?</span><br>
+		</div>
+		<div class="attention">
+			<span style="text-decoration:underline;" onclick="showBlackList()">Чёрный список игр</span><br>
+		</div>
+		<hr style="color:crimson">
+		<div class="game">
+			<div class="left">
+				<div class="poster">
+					<img src="Subverse.jpg">
+				</div>
+			</div>
+			<div class="right">
+				<div class="g-name">
+					<a href="https://www.google.com/search?q=Subverse игра" title="нажми чтобы искать в Google">Subverse</a>
+				</div>
+				<div class="progress">
+					<div class="bar-space">
+						<div class="bar" style="width:32%;"></div>
+					</div>
+				</div>
+				<div class="count">
+					собрано 31 из 97
+				</div>
+				<div class="description">
+					одиночная, аркада, пошаговая, визуальная новелла, космос, роботы, инопланетяне
+				</div>
+			</div>
+		</div>
+		<script>printGames()</script>
+  </div>
+	<div class="content" id="rules" style="display:none;">
+		<div class="back">
+			<span onclick="showList()">←Назад</span><br>
+		</div>
+		<div>
+			<ul style="/*font-size:1.8vmin;*/">
+				<li>Когда ты покупаешь "Голосовать за игру", ты отдаешь свой голос за ту игру, которую ты вписал. 
+				<li>Если такой игры нет в списке, значит ты своим голосом выставляешь её на голосование.
+				<li>Если набирается достаточное количество голосов, игра будет проходится на стриме.
+				<li>Голоса по остальным играм не сбрасываются.
+				<li>Необходимое количество голосов определяется лично SerFinly и зависит от симпатии к игре, предположительном времени прохождения, популярности (просматриваемости) игры.
+				<li>Необходимое количество голосов может быть пересмотрено в какой-то момент по каким-то причинам.
+				<li>Если игру удалось запустить и она сразу не понравилась, то задание считается выполненым и голоса не возвращаются.
+				<li>Если игра платная и труднодоступна, то заказцик (тот, кто выставляет на голосование) должен предоставить доступ к игре или сумму на её покупку в регионе Израиль.
+				<li>Можно заказывать только те игры, которые разрешено стримить на твиче.
+				<li>Нельзя заказывать игры, которые есть только на Android/IOS; PS5 под вопросом.
+				<li>Игра может быть отклонена, если она уже не нравится SerFinly, проходилась ранее, а также если слишком плохо подходит для стримов. В этом случае баллы будут возвращены. Советую перед заказом проверить чёрный список.
+			</ul>
+		</div>
+	</div>
+	<div class="content" id="BlackList" style="display:none;">
+		<div class="back">
+			<span onclick="showList()">←Назад</span><br>
+		</div>
+		<ul>
+			<script>printBL()</script>
+		</ul>
+	</div>
+  <span class="s">
+    <script>starPrint();</script>
+  </span>
+  </body>
