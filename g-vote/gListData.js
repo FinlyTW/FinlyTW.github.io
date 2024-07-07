@@ -1,20 +1,29 @@
 let GL = [
 {
 name: 'RimWorld',
-voteNow: 5,
+voteNow: 6,
 voteNeed: 12,
 alwaysOnTop: 1,
 description: 'одиночная, симулятор колонии, вид сверху, примитивная рисовка, футуризм, выживание',
-imgSRC: '../img/RimWorld.avif',
+imgSRC: '',
 occupancy: 0,
 },
 {
 name: 'VALORANT',
-voteNow: 3,
+voteNow: 5,
 voteNeed: 4,
 alwaysOnTop: 0,
 description: 'командный туктический шутер от первого лица',
 imgSRC: '../img/VALORANT.avif',
+occupancy: 0,
+},
+{
+name: 'Шахматы',
+voteNow: 1,
+voteNeed: 10,
+alwaysOnTop: 0,
+description: 'почему бы и нет?',
+imgSRC: '',
 occupancy: 0,
 },
 ];
