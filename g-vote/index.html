@@ -190,7 +190,11 @@
 					GL[i].occupancy	= tempOccupancy;
 				}
 				
-				GL.sort((a, b) => a.alwaysOnTop > b.occupancy ? 1 : -1);
+				//GL.sort((a, b) => a.alwaysOnTop > b.occupancy ? 1 : -1);
+				
+				GL.sort(function(a, b) {
+					return b.occupancy - a.occupancy;
+				});
 				
 				for (let i = 0; i < GL.length; i++) {
 					printGame (i);
