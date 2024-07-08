@@ -10,7 +10,7 @@ occupancy: 0,
 },
 {
 name: 'VALORANT',
-voteNow: 5,
+voteNow: 3,
 voteNeed: 4,
 alwaysOnTop: 0,
 description: 'командный туктический шутер от первого лица',
