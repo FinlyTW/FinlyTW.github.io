@@ -2,14 +2,14 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-		<!-- <meta charset="UTF-8"> -->
+	<!-- <meta charset="UTF-8"> -->
     <title>Заказы</title>
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link href="../style.css" rel="stylesheet" type="text/css">
     <script src="../nuLib.js"></script>
     <script src="../astraGen.js"></script>
-		<script src="gListData.js"></script>
-		<script src="black-list.js"></script>
+	<script src="gListData.js"></script>
+	<script src="black-list.js"></script>
     <style>
 			/*:root {
 				--s1: 2.5vh;       
@@ -36,7 +36,7 @@
         /*padding-top: 0.1vw;*/
         margin: auto;
 				width: min(60vh, 100vw);
-				//font-size: var(--s3);
+				/*font-size: var(--s3);*/
       }
       
       .s * {
@@ -86,9 +86,6 @@
 				width: 100%;
 			}
 			
-			.poster {
-				
-			}
 			
 			.progress {  
 				width: calc(100% - 0.8vh);
@@ -177,7 +174,7 @@
 		<script>
 		  //PRINTER
 			function printGame (number) {
-				document.write(`<div class="game"><div class="left"><div class="poster"><img src="${GL[number].imgSRC}"></div></div><div class="right"><div class="g-name"><a href="https://www.google.com/search?q=${GL[number].name} игра" title="нажми чтобы искать в Google">${GL[number].name}</a></div><div class="progress"><div class="bar-space"><div class="bar" style="width:${GL[number].occupancy}%;"></div></div></div><div class="count">собрано ${GL[number].voteNow} из ${GL[number].voteNeed}</div><div class="description">${GL[number].description}</div></div></div>`);
+				document.write(`<div class="game"><div class="left"><div class="poster"><img src="${GL[number].imgSRC}"></div></div><div class="right"><div class="g-name"><a href="https://www.google.com/search?q=${GL[number].name} игра" title="нажми чтобы искать в Google" target="_blank">${GL[number].name}</a></div><div class="progress"><div class="bar-space"><div class="bar" style="width:${GL[number].occupancy}%;"></div></div></div><div class="count">собрано ${GL[number].voteNow} из ${GL[number].voteNeed}</div><div class="description">${GL[number].description}</div></div></div>`);
 			}
 			
 			function printGames () {
@@ -218,7 +215,7 @@
 			<span style="text-decoration:underline;" onclick="showBlackList()">Чёрный список игр</span><br>
 		</div>
 		<hr style="color:crimson">
-		<div class="game">
+		<!-- <div class="game">
 			<div class="left">
 				<div class="poster">
 					<img src="Subverse.jpg">
@@ -240,7 +237,7 @@
 					одиночная, аркада, пошаговая, визуальная новелла, космос, роботы, инопланетяне
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<script>printGames()</script>
   </div>
 	<div class="content" id="rules" style="display:none;">
@@ -248,18 +245,18 @@
 			<span onclick="showList()">←Назад</span><br>
 		</div>
 		<div>
-			<ul style="/*font-size:1.8vmin;*/">
-				<li>Когда ты покупаешь "Голосовать за игру", ты отдаешь свой голос за ту игру, которую ты вписал. 
-				<li>Если такой игры нет в списке, значит ты своим голосом выставляешь её на голосование.
-				<li>Если набирается достаточное количество голосов, игра будет проходится на стриме.
-				<li>Голоса по остальным играм не сбрасываются.
-				<li>Необходимое количество голосов определяется лично SerFinly и зависит от симпатии к игре, предположительном времени прохождения, популярности (просматриваемости) игры.
-				<li>Необходимое количество голосов может быть пересмотрено в какой-то момент по каким-то причинам.
-				<li>Если игру удалось запустить и она сразу не понравилась, то задание считается выполненым и голоса не возвращаются.
-				<li>Если игра платная и труднодоступна, то заказцик (тот, кто выставляет на голосование) должен предоставить доступ к игре или сумму на её покупку в регионе Израиль.
-				<li>Можно заказывать только те игры, которые разрешено стримить на твиче.
-				<li>Нельзя заказывать игры, которые есть только на Android/IOS; PS5 под вопросом.
-				<li>Игра может быть отклонена, если она уже не нравится SerFinly, проходилась ранее, а также если слишком плохо подходит для стримов. В этом случае баллы будут возвращены. Советую перед заказом проверить чёрный список.
+			<ul>
+				<li>Когда ты покупаешь "Голосовать за игру", ты отдаешь свой голос за ту игру, которую ты вписал.</li>
+				<li>Если такой игры нет в списке, значит ты своим голосом выставляешь её на голосование.</li>
+				<li>Если набирается достаточное количество голосов, игра будет проходится на стриме.</li>
+				<li>Голоса по остальным играм не сбрасываются.</li>
+				<li>Необходимое количество голосов определяется лично SerFinly и зависит от симпатии к игре, предположительном времени прохождения, популярности (просматриваемости) игры.</li>
+				<li>Необходимое количество голосов может быть пересмотрено в какой-то момент по каким-то причинам.</li>
+				<li>Если игру удалось запустить и она сразу не понравилась, то задание считается выполненым и голоса не возвращаются.</li>
+				<li>Если игра платная и труднодоступна, то заказцик (тот, кто выставляет на голосование) должен предоставить доступ к игре или сумму на её покупку в регионе Израиль.</li>
+				<li>Можно заказывать только те игры, которые разрешено стримить на твиче.</li>
+				<li>Нельзя заказывать игры, которые есть только на Android/IOS и только в VR; PS5 под вопросом.</li>
+				<li>Игра может быть отклонена, если она уже не нравится SerFinly, проходилась ранее, а также если слишком плохо подходит для стримов. В этом случае баллы будут возвращены. Советую перед заказом проверить чёрный список.</li>
 			</ul>
 		</div>
 	</div>
