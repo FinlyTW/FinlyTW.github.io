@@ -5,7 +5,7 @@ voteNow: 6,
 voteNeed: 12,
 alwaysOnTop: 0,
 description: 'одиночная, симулятор колонии, вид сверху, примитивная рисовка, футуризм, выживание',
-imgSRC: '',
+imgSRC: '../img/RimWorld.avif',
 occupancy: 0,
 },
 {
