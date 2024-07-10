@@ -178,6 +178,17 @@
 			}
 			
 			function printGames () {
+				let i = 0;
+				while (i < GL.length) {
+					if (GL[i].voteNeed == 0) {
+						GL.splice(i, 1);
+					}
+					else {
+						i++;
+					}
+				}
+				delete i;
+
 				for (let i = 0; i < GL.length; i++) {
 					let tempOccupancy = GL[i].voteNow / GL[i].voteNeed * 100;
 					//console.log(tempOccupancy);
