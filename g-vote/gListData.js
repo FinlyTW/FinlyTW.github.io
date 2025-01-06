@@ -32,7 +32,7 @@ voteNow: 0,
 voteNeed: 3,
 alwaysOnTop: 0,
 description: 'Эта видеоигра понравилась 95% пользователей, 9,5/10 Steam',
-imgSRC: "../img/Outer wilds.avif",
+imgSRC: "../img/Outer Wilds.avif",
 occupancy: 0,
 },
 {
