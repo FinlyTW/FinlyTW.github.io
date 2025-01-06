@@ -27,7 +27,7 @@ imgSRC: "../img/Minecraft.avif",
 occupancy: 0,
 },
 {
-name: "Outer wilds",
+name: "Outer Wilds",
 voteNow: 0,
 voteNeed: 3,
 alwaysOnTop: 0,
