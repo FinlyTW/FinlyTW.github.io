@@ -174,7 +174,17 @@
 		<script>
 		  //PRINTER
 			function printGame (number) {
-				document.write(`<div class="game"><div class="left"><div class="poster"><img src="${GL[number].imgSRC}"></div></div><div class="right"><div class="g-name"><a href="https://www.google.com/search?q=${GL[number].name} игра" title="нажми чтобы искать в Google" target="_blank">${GL[number].name}</a></div><div class="progress"><div class="bar-space"><div class="bar" style="width:${GL[number].occupancy}%;"></div></div></div><div class="count">собрано ${GL[number].voteNow} из ${GL[number].voteNeed}</div><div class="description">${GL[number].description}</div></div></div>`);
+				let borderColor;
+					if (GL[number].voteNeed < 5) {
+						borderColor = "6ed300e8";
+					}
+					else if (GL[number].voteNeed > 6) {
+						borderColor = "d5bf00e8";
+					}
+					else {
+						borderColor = "d50f00e8";
+					}
+				document.write(`<div class="game"><div class="left"><div class="poster"><img src="${GL[number].imgSRC}"></div></div><div class="right"><div class="g-name"><a href="https://www.google.com/search?q=${GL[number].name} игра" title="нажми чтобы искать в Google" target="_blank">${GL[number].name}</a></div><div class="progress" style="border-color: #${borderColor};"><div class="bar-space"><div class="bar" style="width:${GL[number].occupancy}%;"></div></div></div><div class="count">собрано ${GL[number].voteNow} из ${GL[number].voteNeed}</div><div class="description">${GL[number].description}</div></div></div>`);
 			}
 			
 			function printGames () {
@@ -191,7 +201,6 @@
 
 				for (let i = 0; i < GL.length; i++) {
 					let tempOccupancy = GL[i].voteNow / GL[i].voteNeed * 100;
-					//console.log(tempOccupancy);
 					if (tempOccupancy > 100) {
 						tempOccupancy = 100;
 					}
@@ -199,6 +208,16 @@
 						tempOccupancy = 0;
 					}
 					GL[i].occupancy	= tempOccupancy;
+					/*let borderColor;
+					if (GL[i].voteNeed < 5) {
+						GL[i].borderColor = "#6ed300e8";
+					}
+					else if GL[i].voteNeed > 6) {
+						GL[i].borderColor = "#d5bf00e8";
+					}
+					else {
+						GL[i].borderColor = "#d50f00e6";
+					}*/
 				}
 				
 				//GL.sort((a, b) => a.alwaysOnTop > b.occupancy ? 1 : -1);
@@ -213,6 +232,7 @@
 			}
 			
 			function printBL () {
+				delete i;
 				for (let i = 0; 0 < BL.length; i++) {
 					document.write(`<li>${BL[0]}</li>`);
 					BL = BL.slice(1);
@@ -262,7 +282,7 @@
 		<div>
 			<ul>
 				<li>Когда ты покупаешь награду "ВЫБОРЫ...", ты отдаешь свой голос за ту игру, которую ты вписал.</li>
-				<li>Если такой игры нет в списке, то ты своим голосом в список её добавляешь.</li>
+				<li>Если такой игры нет в списке, то она будет добавлена и твой голос учтён.</li>
 				<li>Если набирается достаточное количество голосов, игра будет проходится на стриме.</li>
 				<li>Голоса по остальным играм не сбрасываются.</li>
 				<li>Необходимое количество голосов определяется лично SerFinly и зависит от симпатии к игре, предположительном времени прохождения, популярности (просматриваемости) игры.</li>
