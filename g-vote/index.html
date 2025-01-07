@@ -179,10 +179,10 @@
 						borderColor = "6ed300e8";
 					}
 					else if (GL[number].voteNeed > 6) {
-						borderColor = "d5bf00e8";
+						borderColor = "d50f00e8";
 					}
 					else {
-						borderColor = "d50f00e8";
+						borderColor = "d5bf00e8";
 					}
 				document.write(`<div class="game"><div class="left"><div class="poster"><img src="${GL[number].imgSRC}"></div></div><div class="right"><div class="g-name"><a href="https://www.google.com/search?q=${GL[number].name} игра" title="нажми чтобы искать в Google" target="_blank">${GL[number].name}</a></div><div class="progress" style="border-color: #${borderColor};"><div class="bar-space"><div class="bar" style="width:${GL[number].occupancy}%;"></div></div></div><div class="count">собрано ${GL[number].voteNow} из ${GL[number].voteNeed}</div><div class="description">${GL[number].description}</div></div></div>`);
 			}
