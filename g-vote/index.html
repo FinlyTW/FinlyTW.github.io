@@ -144,6 +144,10 @@
 			.back {
 				cursor: pointer;
 			}
+			
+			.poster > img {
+				filter: drop-shadow(0 0 1vmin);
+			}
     </style>
 		<script>
 			// LIB
@@ -174,17 +178,17 @@
 		<script>
 		  //PRINTER
 			function printGame (number) {
-				let borderColor;
+				let shadowColor;
 					if (GL[number].voteNeed < 5) {
-						borderColor = "6ed300e8";
+						shadowColor = "#6bff58";
 					}
 					else if (GL[number].voteNeed > 6) {
-						borderColor = "d50f00e8";
+						shadowColor = "red";
 					}
 					else {
-						borderColor = "d5bf00e8";
+						shadowColor = "#e6e600";
 					}
-				document.write(`<div class="game"><div class="left"><div class="poster"><img src="${GL[number].imgSRC}"></div></div><div class="right"><div class="g-name"><a href="https://www.google.com/search?q=${GL[number].name} игра" title="нажми чтобы искать в Google" target="_blank">${GL[number].name}</a></div><div class="progress" style="border-color: #${borderColor};"><div class="bar-space"><div class="bar" style="width:${GL[number].occupancy}%;"></div></div></div><div class="count">собрано ${GL[number].voteNow} из ${GL[number].voteNeed}</div><div class="description">${GL[number].description}</div></div></div>`);
+				document.write(`<div class="game"><div class="left"><div class="poster"><img src="${GL[number].imgSRC}" style="color: ${shadowColor};"></div></div><div class="right"><div class="g-name"><a href="https://www.google.com/search?q=${GL[number].name} игра" title="нажми чтобы искать в Google" target="_blank">${GL[number].name}</a></div><div class="progress"><div class="bar-space"><div class="bar" style="width:${GL[number].occupancy}%;"></div></div></div><div class="count">собрано ${GL[number].voteNow} из ${GL[number].voteNeed}</div><div class="description">${GL[number].description}</div></div></div>`);
 			}
 			
 			function printGames () {
@@ -213,7 +217,7 @@
 						GL[i].borderColor = "#6ed300e8";
 					}
 					else if GL[i].voteNeed > 6) {
-						GL[i].borderColor = "#d5bf00e8";
+						GL[i].borderColor = "red;";
 					}
 					else {
 						GL[i].borderColor = "#d50f00e6";
@@ -250,10 +254,12 @@
 			<span style="text-decoration:underline;" onclick="showBlackList()">Чёрный список игр</span><br>
 		</div>
 		<hr style="color:crimson">
-		<!-- <div class="game">
+		
+		
+		<div class="game">
 			<div class="left">
 				<div class="poster">
-					<img src="Subverse.jpg">
+					<img src="Subverse.jpg" style="color: red;">
 				</div>
 			</div>
 			<div class="right">
@@ -272,7 +278,9 @@
 					одиночная, аркада, пошаговая, визуальная новелла, космос, роботы, инопланетяне
 				</div>
 			</div>
-		</div> -->
+		</div>
+		
+		
 		<script>printGames()</script>
   </div>
 	<div class="content" id="rules" style="display:none;">
