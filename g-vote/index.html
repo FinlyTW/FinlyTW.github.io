@@ -2,14 +2,13 @@
 <html lang="ru">
   <head>
     <meta charset="UTF-8" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
-	<!-- <meta charset="UTF-8"> -->
     <title>Заказы</title>
     <link rel="shortcut icon" href="../favicon.ico" type="image/x-icon">
     <link href="../style.css" rel="stylesheet" type="text/css">
     <script src="../nuLib.js"></script>
     <script src="../astraGen.js"></script>
 	<script src="gListData.js"></script>
-	<script src="black-list.js"></script>
+	<!-- <script src="black-list.js"></script> -->
     <style>
 			/*:root {
 				--s1: 2.5vh;       
@@ -160,21 +159,21 @@
 		  // Page swap
 			function showRules () {
 				G('gList').style.display = 'none';
-				G('BlackList').style.display = 'none';
+				/*G('BlackList').style.display = 'none';*/
 				G('rules').style.display = 'block';
 			}
 			
 			function showList () {
 				G('rules').style.display = 'none';
-				G('BlackList').style.display = 'none';
+				/*G('BlackList').style.display = 'none';*/
 				G('gList').style.display = 'block';
 			}
 			
-			function showBlackList () {
+			/*function showBlackList () {
 				G('rules').style.display = 'none';
 				G('gList').style.display = 'none';
 				G('BlackList').style.display = 'block';
-			}
+			}*/
 		</script>
 		<script>
 		  //PRINTER
@@ -213,16 +212,6 @@
 						tempOccupancy = 0;
 					}
 					GL[i].occupancy	= tempOccupancy;
-					/*let borderColor;
-					if (GL[i].voteNeed < 5) {
-						GL[i].borderColor = "#6ed300e8";
-					}
-					else if GL[i].voteNeed > 6) {
-						GL[i].borderColor = "red;";
-					}
-					else {
-						GL[i].borderColor = "#d50f00e6";
-					}*/
 				}
 				
 				//GL.sort((a, b) => a.alwaysOnTop > b.occupancy ? 1 : -1);
@@ -251,9 +240,9 @@
 	  <div class="attention">
 			<span style="text-decoration:underline;" onclick="showRules()">Как это работает?</span><br>
 		</div>
-		<div class="attention">
+		<!-- <div class="attention">
 			<span style="text-decoration:underline;" onclick="showBlackList()">Чёрный список игр</span><br>
-		</div>
+		</div> -->
 		<hr style="color:crimson">
 		
 		
@@ -300,18 +289,18 @@
 				<li>Если игра платная и труднодоступна, то заказцик (тот, кто выставляет на голосование) должен предоставить доступ к игре или сумму на её покупку в регионе Израиль.</li>
 				<li>Можно заказывать только те игры, которые разрешено стримить на твиче.</li>
 				<li>Нельзя заказывать игры, которые есть только на Android/IOS и только в VR; PS5 под вопросом.</li>
-				<li>Игра может быть отклонена, если она уже не нравится SerFinly, проходилась ранее, а также если слишком плохо подходит для стримов. В этом случае баллы будут возвращены. Советую перед заказом проверить чёрный список.</li>
+				<li>Игра может быть отклонена, если она уже не нравится SerFinly, проходилась ранее, а также если слишком плохо подходит для стримов. В этом случае баллы будут возвращены. <!-- Советую перед заказом проверить чёрный список. --></li>
 			</ul>
 		</div>
 	</div>
-	<div class="content" id="BlackList" style="display:none;">
+	<!-- <div class="content" id="BlackList" style="display:none;">
 		<div class="back">
 			<span onclick="showList()">←Назад</span><br>
 		</div>
 		<ul>
 			<script>printBL()</script>
 		</ul>
-	</div>
+	</div> -->
   <span class="s">
     <script>starPrint();</script>
   </span>
